@@ -1,4 +1,6 @@
 function [ result ] = fillsingle(order, carrier, carriee, options)
+%fillsingle Fill a single 
+%   Detailed explanation goes here
 
 order = round(order);
 assert(all(order >= 0));

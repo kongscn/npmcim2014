@@ -1,5 +1,15 @@
 % Solution to Problem 1-3
+
+clear
+addpath('solver')
+
 %% Given Data
+
+% Orders 
+
+order = [100; 68;  0 ];    % Order of problem 1, solution: 16 - 2 T
+% order = [72;  52;  0 ];    % Order of problem 2, solution: 11 - 2 vs 12 - 1
+% order = [156; 102; 39];    % Order of problem 3, solution: 25 - 5 T
 
 % Carriers
 
@@ -20,46 +30,10 @@ carriee.lwh = [4.61     1.7     1.51;
                3.615    1.605   1.394;
                4.63     1.785   1.77];
 
-order = [100; 68;  0 ];    % Sol 16 - 2 T
-order = [72;  52;  0 ];    % Sol 11 - 2 vs 12 - 1
-% order = [156; 102; 39];    % Sol 25 - 5 T
-
 options = containers.Map;
 options('const15') = true;
 options('fullfill') = true;
 
 [ used, sche, aux] = opti_loc(order, carrier, carriee, options);
-
-% strategy = {};
-% used = zeros(1, length(carrier));
-% iter = 0;
-% 
-% while any(round(order)) > 0
-%     iter = iter+1;
-%     nfill = zeros(1, length(carrier));
-%     rests = {};
-%     for i=1:length(carrier)
-%         if carrier(i).limit > 0
-%             rest = fillsingle(order, carrier(i), carriee);
-%             nfill(i) = rest.nfilled;
-%         else
-%             nfill(i) = 0;
-%             rest = struct;
-%         end
-%         rests{i} = rest;
-%     end
-%     [C, I] = max(nfill);
-%     % 1:5 constrain
-%     if I == 2 && used(2) + 1 > 0.2 * used(1)
-%         nfill(I) = 0;
-%         [C, I] = max(nfill);
-%     end
-%     I
-%     carrier(I).limit = carrier(I).limit - 1;
-%     used(I) = used(I) + 1;
-%     strategy = [strategy, rests{I}];
-%     order = order - rests{I}.filled;
-%     assert(min(order)>=0);
-% end
 
 used

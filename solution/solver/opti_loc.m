@@ -1,6 +1,11 @@
 function [ used, scheme, auxorder_total, iter ] = ...
     opti_loc( order, carrier, carriee, options )
-
+%opti_loc Find fill strategy for a single destination.
+%
+% options: keys that store solution configuration, valid keys are:
+%   const15:  每次1-2型轿运车使用量不超过1-1型轿运车使用量的20%
+%   fullfill: whether or not use auxiliary order to fullfill carrier
+%   aux_limit: max auxiliary order. 
 opts = containers.Map;
 opts('const15') = false;
 opts('fullfill') = false;

@@ -1,11 +1,14 @@
 % Solution to Problem 4
 % 25-2 v.s. 23-3
+
+clear
+addpath('solver')
+
 %% Configuration
 
 options = containers.Map;
 options('const15') = true;
 options('fullfill') = true;
-% options('aux_limit') = [0; 2; 2];
 
 %% Given Data
 

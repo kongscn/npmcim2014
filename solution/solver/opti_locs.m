@@ -1,4 +1,8 @@
 function [ used, sches ] = opti_locs( carrier, carriee, orders, options )
+%opti_locs Find fill strategy corresponds to destinations like in Problem 5.
+%
+% options: key-values that control solution configurations,
+%          see `opti_loc` for detail.
 
 order.A = orders(:, 1);
 order.B = orders(:, 2);
